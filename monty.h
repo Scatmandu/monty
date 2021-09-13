@@ -38,4 +38,9 @@ typedef struct instruction_s
 
 int exec_functions(char *opcode, stack_t **stack, unsigned int line_number);
 
+
+/** push and pall function file prototype  **/
+void push(stack_t **stack, unsigned int line_number, int n);
+void pall(stack_t **stack, unsigned int line_number);
+
 #endif
