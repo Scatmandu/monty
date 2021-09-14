@@ -13,14 +13,14 @@ int main(int argc, char *argv[])
 	char *line = NULL;
 	char *opcode;
 	char *n;
-	int line_number = 0;
+	unsigned int line_number = 0;
 	stack_t *stack = NULL;
 	size_t len = 0;
-	ssize_t read = getline(&line, &len, fd);
+	ssize_t read;
 
 	if (argc != 2)
 	{
-		fprintf(stderr, "USAGE: monty file \n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	fd = fopen(argv[1], "r");
@@ -29,15 +29,17 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
+	read = getline(&line, &len, fd);
 	while (read != -1)
 	{
 		line_number++;
-		opcode = strtok(line, " \n\t");
+		opcode = strtok(line, " \n");
 		if (opcode == NULL || strncmp(opcode, "#", 1) == 0)
 			continue;
 		if (strcmp(opcode, "push") == 0)
 		{
-			n = strtok(NULL, " \n\t");
+			printf("asdf\n");
+			n = strtok(NULL, " \n");
 			push(&stack, line_number, n);
 		}
 		else
@@ -45,6 +47,6 @@ int main(int argc, char *argv[])
 	}
 	free(stack);
 	free(line);
-	fclose(fd);
+	free(fd);
 	return (EXIT_SUCCESS);
 }

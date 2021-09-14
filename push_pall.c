@@ -9,9 +9,9 @@
 void push(stack_t **stack, unsigned int line_number, char *n)
 {
 	stack_t *new;
-	stack_t *h = *stack;
+	int i;
 
-	if (stack == NULL)
+	if (n == NULL)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
@@ -19,13 +19,19 @@ void push(stack_t **stack, unsigned int line_number, char *n)
 
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
-	new->prev = NULL;
+	}
 	new->n = atoi(n);
-	new->next = *stack;
-
+	new->next = NULL;
+	new->prev = NULL;
+	
 	if (*stack)
-		h->prev = new;
+	{
+		new->next = *stack;
+		(*stack)->prev = new;
+	}
 	*stack = new;
 }
 
@@ -42,7 +48,7 @@ void pall(stack_t **stack, unsigned int line_number)
 
 	while (h)
 	{
-		printf("%d", h->n);
+		printf("%d\n", h->n);
 		h = h->next;
 	}
 }
