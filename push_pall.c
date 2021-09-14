@@ -6,14 +6,14 @@
  * @n: Int variable
  * Return: New element address
  */
-void push(stack_t **stack, unsigned int line_number, int n)
+void push(stack_t **stack, unsigned int line_number, char *n)
 {
 	stack_t *new;
 	stack_t *h = *stack;
 
 	if (stack == NULL)
 	{
-		fprintf(stderr) /* Need help finishing this part */
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -21,7 +21,7 @@ void push(stack_t **stack, unsigned int line_number, int n)
 	if (new == NULL)
 		exit(EXIT_FAILURE);
 	new->prev = NULL;
-	new->n = n;
+	new->n = atoi(n);
 	new->next = *stack;
 
 	if (*stack)

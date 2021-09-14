@@ -12,7 +12,6 @@ int executor(char *opcode, stack_t **stack, unsigned int line_number)
 	int i;
 
 		instruction_t opcodes[] = {
-			{"push", push},
 			{"pall", pall},
 			{"pint", pint},
 			{"pop", pop},
@@ -30,4 +29,6 @@ int executor(char *opcode, stack_t **stack, unsigned int line_number)
 			return (EXIT_SUCCESS);
 		}
 	}
+	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
+	exit(EXIT_FAILURE);
 }
