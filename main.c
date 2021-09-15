@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 			push(&stack, line_number, n);
 		}
 		else
-			executor(opcode, &stack, line_number, fd);
+			xecutor(opcode, &stack, line_number, fd);
 	}
 	free(stack);
 	free(line);
