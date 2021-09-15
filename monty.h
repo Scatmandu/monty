@@ -17,9 +17,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -32,11 +32,11 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number, char *opcode, FILE *fd);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number, char *opcode, FILE *fd);
 } instruction_t;
 
-int executor(char *opcode, stack_t **stack, unsigned int line_number, FILE *fd);
+int xecutor(char *opcode, stack_t **stack, unsigned int line_number, FILE *fd);
 void push(stack_t **stack, unsigned int line_number, char *n);
 void pall(stack_t **stack, unsigned int line_number, char *opcode, FILE *fd);
 void pint(stack_t **stack, unsigned int line_number, char *opcode, FILE *fd);
