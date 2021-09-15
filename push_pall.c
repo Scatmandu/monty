@@ -9,7 +9,6 @@
 void push(stack_t **stack, unsigned int line_number, char *n)
 {
 	stack_t *new;
-	int i;
 
 	if (n == NULL)
 	{
