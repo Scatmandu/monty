@@ -26,7 +26,7 @@ void push(stack_t **stack, unsigned int line_number, char *n)
 	new->n = atoi(n);
 	new->next = NULL;
 	new->prev = NULL;
-	
+
 	if (*stack)
 	{
 		new->next = *stack;
@@ -39,12 +39,16 @@ void push(stack_t **stack, unsigned int line_number, char *n)
  * pall - function that prints all values on the stack
  * @stack: Pointer for head of the stack
  * @line_number: Line number for the file
+ * @opcode: tokenized opcode
+ * @fd: file descriptor
  * Return: Void
  */
-void pall(stack_t **stack, unsigned int line_number)
+void pall(stack_t **stack, unsigned int line_number, char *opcode, FILE *fd)
 {
 	stack_t *h = *stack;
-	(void)line_number;
+	(void) line_number;
+	(void) opcode;
+	(void) fd;
 
 	while (h)
 	{

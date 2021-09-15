@@ -33,19 +33,17 @@ typedef struct stack_s
 typedef struct instruction_s
 {
         char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+        void (*f)(stack_t **stack, unsigned int line_number, char *opcode, FILE *fd);
 } instruction_t;
 
-int executor(char *opcode, stack_t **stack, unsigned int line_number);
-
-
-/** push and pall function file prototype  **/
+int executor(char *opcode, stack_t **stack, unsigned int line_number, FILE *fd);
 void push(stack_t **stack, unsigned int line_number, char *n);
-void pall(stack_t **stack, unsigned int line_number);
-void pint(stack_t **stack, unsigned int line_number);
-void pop(stack_t **stack, unsigned int line_number);
-void swap(stack_t **stack, unsigned int line_number);
-void add(stack_t **stack, unsigned int line_number);
-void nop(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number, char *opcode, FILE *fd);
+void pint(stack_t **stack, unsigned int line_number, char *opcode, FILE *fd);
+void pop(stack_t **stack, unsigned int line_number, char *opcode, FILE *fd);
+void swap(stack_t **stack, unsigned int line_number, char *opcode, FILE *fd);
+void add(stack_t **stack, unsigned int line_number, char *opcode, FILE *fd);
+void nop(stack_t **stack, unsigned int line_number, char *opcode, FILE *fd);
+void free_list(stack_t *head);
 
 #endif

@@ -1,10 +1,9 @@
 #include "monty.h"
 /**
-*
-*
-*
-*
-*
+* main- runs the program
+* @argc: number of arguments
+* @argv: array containing arguments as strings
+* Return: EXIT_SUCCESS
 **/
 
 int main(int argc, char *argv[])
@@ -42,7 +41,7 @@ int main(int argc, char *argv[])
 			push(&stack, line_number, n);
 		}
 		else
-			executor(opcode, &stack, line_number);
+			executor(opcode, &stack, line_number, fd);
 	}
 	free(stack);
 	free(line);
