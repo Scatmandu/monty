@@ -29,17 +29,16 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	read = getline(&line, &len, fd);
-	while (read != -1)
+	/*read = getline(&line, &len, fd);*/
+	while ((read = getline(&line, &len, fd)) != -1)
 	{
 		line_number++;
-		opcode = strtok(line, " \n");
+		opcode = strtok(line, "\n ");
 		if (opcode == NULL || strncmp(opcode, "#", 1) == 0)
 			continue;
 		if (strcmp(opcode, "push") == 0)
 		{
-			printf("asdf\n");
-			n = strtok(NULL, " \n");
+			n = strtok(NULL, "\n ");
 			push(&stack, line_number, n);
 		}
 		else
