@@ -1,13 +1,13 @@
 #include "monty.h"
 /**
-* executor- executed opcodes
+* xecutor- executed opcodes
 * @stack: pointer to 2x linked list
 * @line_number: line number
 * @opcode: tokenized opcode
 * @fd: file descriptor
 * Return: void
 **/
-int executor(char *opcode, stack_t **stack, unsigned int line_number, FILE *fd)
+int xecutor(char *opcode, stack_t **stack, unsigned int line_number, FILE *fd)
 {
 	int i;
 
